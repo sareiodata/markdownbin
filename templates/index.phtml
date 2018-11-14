@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Markdown bin</title>
+    <meta name="description" content="Write Markdown text. Get url and share it." />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+</head>
+<body>
+<div class="main">
+    <header>
+        <h1><svg height="25pt" viewBox="-31 0 512 512" width="25pt" xmlns="http://www.w3.org/2000/svg"><path d="m417.390625 222.550781-212.722656-20.019531 20.015625 309.46875h160.734375zm0 0" fill="#ff4c04"/><path d="m350.015625 51.914062-62.667969-5.941406-62.664062-45.972656-20.015625 178.617188 189.535156-20.015626zm0 0" fill="#efe2dd"/><path d="m350.015625 51.914062-88.625 36.707032-36.707031-88.621094zm0 0" fill="#b4aaaa"/><path d="m224.683594 0-168.34375 69.730469 36.8125 88.871093 131.53125 20.015626zm0 0" fill="#fff5f5"/><path d="m31.972656 222.550781 31.976563 289.449219h160.734375v-309.46875zm0 0" fill="#ff9f22"/><path d="m449.367188 158.601562h-224.683594l-20.015625 32.753907 20.015625 31.195312h224.683594zm0 0" fill="#e30000"/><path d="m0 158.601562h224.683594v63.949219h-224.683594zm0 0" fill="#ff4c04"/></svg>
+            <a title="Write Markdown => Get a link." href="/">Markdown Bin</a></h1>
+        <div class="publish"><button type="submit" form="add-bin">Publish</button></div>
+    </header>
+
+    <div class="editor">
+        <form id="add-bin" method="post" action="">
+                <textarea name="markdown" id="markdown-textarea" autofocus># Delete This & Start Writing
+
+The markdown syntax can be found [here](https://daringfireball.net/projects/markdown/syntax)
+
+* once published, the bin can be edited via a secret URL
+* anyone with the edit url can modify that particular bin
+* the public URL is the rendered version of this document
+* bins will be deleted after 30 days
+* this is not a Markdown WYSIWYG editor. The HTML gets rendered after publishing
+* do not store anything important here. Just write something and share it. It's not meant to last
+                </textarea>
+            <input type="hidden" id="markdown-selectionStart" name="markdown-selectionStart" value="<?php echo $selectionStart; ?>"/>
+            <input type="hidden" id="markdown-selectionEnd" name="markdown-selectionEnd" value="<?php echo $selectionEnd; ?>"/>
+            <input type="hidden" id="markdown-scrollTop" name="markdown-scrollTop" value="<?php echo $scrollTop; ?>"/>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let textarea = document.getElementById('markdown-textarea');
+
+    //initialize with prev POST data.
+    textarea.selectionStart = document.getElementById("markdown-selectionStart").value;
+    textarea.selectionEnd = document.getElementById("markdown-selectionEnd").value;
+    textarea.scrollTop = document.getElementById("markdown-scrollTop").value;
+
+
+    ['keyup', 'click', 'input', 'focus', 'scroll'].forEach( evt =>
+        textarea.addEventListener(evt, updateSelectionStartEnd, false)
+    );
+
+    function updateSelectionStartEnd(){
+        document.getElementById("markdown-selectionStart").value  = this.selectionStart
+        document.getElementById("markdown-selectionEnd").value  = this.selectionEnd
+        document.getElementById("markdown-scrollTop").value  = this.scrollTop
+    }
+
+    function enableTab(id) {
+        let el = document.getElementById(id);
+        el.onkeydown = function(e) {
+            if (e.keyCode === 9) { // tab was pressed
+
+                // get caret position/selection
+                var val = this.value,
+                    start = this.selectionStart,
+                    end = this.selectionEnd;
+
+                // set textarea value to: text before caret + tab + text after caret
+                this.value = val.substring(0, start) + '    ' + val.substring(end);
+
+                // put caret at right position again
+                this.selectionStart = this.selectionEnd = start + 4;
+
+                // prevent the focus lose
+                return false;
+
+            }
+        };
+    }
+    enableTab('markdown-textarea');
+</script>
+</body>
+</html>

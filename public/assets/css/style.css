@@ -1,0 +1,243 @@
+/*
+ * General Style
+ */
+
+* {box-sizing: border-box;}
+
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+
+@media (max-width: 65ch) {
+    body {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+}
+
+form {
+    min-height: 100%;
+}
+
+/*
+ * Base Typography
+ */
+body {
+    font: 1.1em/1.4 Cambria, Georgia Pro, Georgia, serif;
+    font-variant-numeric: lining-nums;
+    color: #111;
+    background: hsl(30,90%,98%);
+}
+
+p {
+    margin: 0.15em 0; }
+
+a, a:visited {
+    color: #009;
+    text-decoration: none;
+}
+a:hover {
+    color: #009;
+    outline-width: 0;
+    text-decoration: underline; }
+a:active {
+    color: #009; }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.5em 0 0.5em; }
+
+h1 {font-size: 2.33em;}
+h2 {font-size: 1.75em;}
+h3 {font-size: 1.5em;}
+h4 {font-size: 1.25em;}
+h5 {font-size: 1.15em;}
+h6 {font-size: 1.05em;}
+
+b, strong{
+    font-weight: 700; }
+
+em, .em {
+    font-style: italic; }
+
+hr {
+    height: 1px;
+    background: #eee;
+    border: 0;
+    margin: 2em 0 }
+
+code, kbd, pre, samp{
+    font-family: monospace, monospace;
+    font-size: 1em;
+    line-height: 1.4em;
+    word-wrap: break-word;
+    color: #800;
+    background-color: #f7f7f7;
+    font-weight: normal;
+    padding: 0;
+    white-space: pre-wrap; }
+
+pre {
+    padding: 1em 0;
+    overflow: auto;
+    border: 1px solid #e7e7e7; }
+
+blockquote{
+    font-style: italic;
+    font-size: 1.2rem;
+    background: #e7e7e7;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+blockquote[cite]::after {
+    content: "(" attr(cite) ")";
+    display: block;
+    font-size: smaller;
+    font-style: normal;
+    opacity: 0.5;
+}
+
+/*
+ * Layout / structure
+ */
+.main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main > header,
+.main > .editor,
+.main > .hentry{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main header{
+    flex-direction: row;
+}
+
+.main .hentry{
+    max-width: 80vw;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: normal;
+}
+
+/*
+ * Header
+ */
+
+.main header{
+    background: rgb(255, 224, 27);
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #FFFC82;
+    padding: 1em;
+    max-height: 50px;
+    align-items: center;
+}
+
+.main header h1,
+.main header .publish {
+    flex: 1;
+}
+
+.main header .publish{
+    max-width: 130px;
+    text-align: right;
+}
+
+.main header h1 a,
+.main header h1 a:visited{
+    color: #444;
+}
+
+.main header h1{
+    font-size: 0.8em;
+    margin: 0;
+    line-height: 0.9em;
+    vertical-align: middle;
+}
+.main header h1 img,
+.main header h1 svg{
+    vertical-align: middle;
+    margin-right: 0.3em;
+    margin-top: -0.2em;
+}
+
+.publish a,
+.publish button{
+    border-radius: 3px;
+    border: none;
+    padding: 5px 0.7em;
+    color: #fff;
+    background: rgb(30, 71, 78);
+    cursor: pointer;
+    font: 1em/1.4 Cambria, Georgia Pro, Georgia, serif;
+    text-decoration: none;
+    transition: 0.15s border ease-out;
+}
+.publish a:hover,
+.publish button:hover{
+    background: #F16815 !important;
+    border-bottom: 1px solid #A76007;
+    border-right: 1px solid #A76007;
+    transition: 0.15s border ease-in;
+}
+
+/*
+ * Edit Notice
+ */
+.notice{
+    padding: 0.5em 1em;
+    font-size: 0.7em;
+    border-left: 0.5em solid #F79C20;
+    opacity: 0.5;
+    transition: 0.15s padding ease-out, 0.15s margin ease-out, 0.15s border ease-out, 0.15s opacity ease-in-out;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.notice:hover{
+    opacity: 1;
+    /*padding: 1em;*/
+    transition: 0.15s padding ease-out, 0.15s margin ease-out, 0.15s border ease-out, 0.15s opacity ease-in-out;
+}
+
+/*
+ * Editor
+ */
+
+.editor {
+    box-shadow: inset 0px 0px 14px 0px rgba(0,0,0,0.47);
+    background: #fff;
+}
+
+.editor textarea{
+    background: transparent;
+    border: transparent;
+    width: 100%;
+    height: 99%;
+    font-size: 1.1em;
+    padding: 1em;
+    line-height: 1.5em;
+}

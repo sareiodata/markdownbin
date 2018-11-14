@@ -1,0 +1,4 @@
+vendor/*
+public/bin/*
+logs/*
+src/config.php
