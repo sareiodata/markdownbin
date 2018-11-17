@@ -8,7 +8,8 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /*height: 100vh;*/
+    height: 100%;
 
 }
 
@@ -238,7 +239,6 @@ blockquote[cite]::after {
 
 .notice:hover{
     opacity: 1;
-
     transition: 0.15s padding ease-out, 0.15s margin ease-out, 0.15s border ease-out, 0.15s opacity ease-in-out;
 }
 
