@@ -1,0 +1,25 @@
+<h1>All Tickets</h1>
+
+<p><a href="/ticket/new">Add new ticket</a></p>
+
+<table class="pure-table">
+    <tr>
+        <th>Title</th>
+        <th>Component</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+
+    <?php foreach ($tickets as $ticket): ?>
+
+        <tr>
+            <td><?=$ticket->getTitle() ?></td>
+            <td><?=$ticket->getComponent() ?></td>
+            <td><?=$ticket->getShortDescription() ?> ...</td>
+            <td>
+                <a href="<?=$router->pathFor('ticket-detail', ['id' => $ticket->getId()])?>">view</a>
+            </td>
+        </tr>
+
+    <?php endforeach; ?>
+</table>
