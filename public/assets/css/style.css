@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-body {
+body, .main {
     height: calc(var(--vh, 1vh) * 100);
 }
 
@@ -124,7 +124,6 @@ blockquote[cite]::after {
  * Layout / structure
  */
 .main{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }

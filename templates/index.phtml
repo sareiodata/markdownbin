@@ -86,13 +86,13 @@ The markdown syntax can be found [here](https://daringfireball.net/projects/mark
     console.log(el[0].offsetHeight)
     console.log(vh)
 
-    el[0].offsetHeight = vh *100 ;
+    el[0].offsetHeight = vh *50 ;
 
     window.addEventListener('resize', () => {
         // We execute the same script as before
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-        el[0].offsetHeight = vh *100 ;
+        el[0].offsetHeight = vh *50 ;
         console.log(el[0].offsetHeight)
         console.log(vh)
     });
