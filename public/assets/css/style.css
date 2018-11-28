@@ -12,8 +12,6 @@ body {
 }
 
 body, .main {
-    /*position: fixed;*/
-    width: 100%;
     height: calc(var(--vh, 1vh) * 100);
 }
 
